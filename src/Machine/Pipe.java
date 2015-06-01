@@ -9,7 +9,11 @@ import Interfaces.Iterator;
 import Tools.DataType;
 import java.util.BitSet;
 import Tools.MIC1;
+<<<<<<< HEAD
 import EnumerationData.ComponentEnum;
+=======
+import EnumationData.ComponentEnum;
+>>>>>>> 0d8593f5013ad0461213211f5b34f51523fb76f9
 
 /*! \brief  This class simulates the MIC1 bus component.
 *
@@ -116,10 +120,15 @@ public class Pipe extends DataType implements Iterator {
 
         switch (type) {
             case MEMORY:
+<<<<<<< HEAD
             case SHIFTER:
             case ALU:
                 return;
            
+=======
+            case ALU:
+                return;
+>>>>>>> 0d8593f5013ad0461213211f5b34f51523fb76f9
             case MAR:
                 this.getPrevious();
                 this.setData(this.previous.getData());

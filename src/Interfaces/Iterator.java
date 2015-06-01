@@ -8,7 +8,11 @@ package Interfaces;
 
 import Machine.Pipe;
 import Machine.Pipe;
+<<<<<<< HEAD
 import EnumerationData.ComponentEnum;
+=======
+import EnumationData.ComponentEnum;
+>>>>>>> 0d8593f5013ad0461213211f5b34f51523fb76f9
 
 /*! \brief  Interface that implements the Iterator Design Pattern.
 *  All the MIC1 Component uses this interface. 

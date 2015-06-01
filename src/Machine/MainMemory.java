@@ -7,15 +7,26 @@ package Machine;
 
 import GUI.TableGui;
 import Tools.MIC1;
+<<<<<<< HEAD
 import EnumerationData.ComponentEnum;
 
 /*! \brief  This class simulates the MIC1 Main Memory component.
  *
+=======
+import EnumationData.ComponentEnum;
+
+/*! \brief  This class simulates the MIC1 Main Memory component.
+*
+>>>>>>> 0d8593f5013ad0461213211f5b34f51523fb76f9
  * It is implemented using the Singleton pattern.
  * This is simulates the segments of virtual space such as CODE, DATA, STACK
  * 
  * @author Thiago G Goncalves
  */
+<<<<<<< HEAD
+=======
+
+>>>>>>> 0d8593f5013ad0461213211f5b34f51523fb76f9
 public class MainMemory extends TableGui {
 
     private int mac1StructionCount = 0;
@@ -26,12 +37,19 @@ public class MainMemory extends TableGui {
     private int write = 0;
     public Pipe begin;
     public Pipe end;
+<<<<<<< HEAD
 
     private short current_allocation_location = 50;
+=======
+    
+    
+    private short current_allocation_location = 100;
+>>>>>>> 0d8593f5013ad0461213211f5b34f51523fb76f9
 
     private static final MainMemory instance = new MainMemory();
 
     private MainMemory() {
+<<<<<<< HEAD
         super(ComponentEnum.MEMORY, GUI.GUI.memory, (short) 4096);
     }
 
@@ -46,6 +64,18 @@ public class MainMemory extends TableGui {
         this.getDataStructureData(this.mac1StructionCount).setIsInstruction(true);
         this.getDataStructureData(this.mac1StructionCount).setInstruction(segements[1]);
 
+=======
+        super(ComponentEnum.MEMORY, GUI.GUI.memory, (short)4096);
+    }
+
+    public static MainMemory getInstance() {
+        return instance;
+    }
+
+
+    public void pushDecodedInstruction(short code) {
+        this.setDataStructureValue(this.mac1StructionCount,code);
+>>>>>>> 0d8593f5013ad0461213211f5b34f51523fb76f9
         this.mac1StructionCount++;
     }
 
@@ -107,6 +137,7 @@ public class MainMemory extends TableGui {
         return this.current_allocation_location - 1;
     }
 
+<<<<<<< HEAD
     @Override
     public void clearDataStructure() {
         this.current_allocation_location = 50;
@@ -120,4 +151,6 @@ public class MainMemory extends TableGui {
         super.clearDataStructure(); //To change body of generated methods, choose Tools | Templates.
     }
 
+=======
+>>>>>>> 0d8593f5013ad0461213211f5b34f51523fb76f9
 }

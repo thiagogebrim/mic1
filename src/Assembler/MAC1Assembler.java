@@ -5,7 +5,11 @@
  */
 package Assembler;
 
+<<<<<<< HEAD
 import EnumerationData.Mac1Enum;
+=======
+import EnumationData.Mac1Enum;
+>>>>>>> 0d8593f5013ad0461213211f5b34f51523fb76f9
 import Machine.MainMemory;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -31,9 +35,14 @@ public class MAC1Assembler {
     MainMemory m_memory;
     ArrayList memory_mic1 = new ArrayList();
 
+<<<<<<< HEAD
  
    
     
+=======
+    String fileName = "mac.txt";
+
+>>>>>>> 0d8593f5013ad0461213211f5b34f51523fb76f9
     public ArrayList<String> MacCode() {
 
         return this.inputCode;
@@ -42,10 +51,16 @@ public class MAC1Assembler {
     public MAC1Assembler() {
 
         m_memory = MainMemory.getInstance();
+<<<<<<< HEAD
         this.reset();
     }
 
     public ArrayList<String> getBinaryCode() {
+=======
+    }
+
+    public ArrayList<Short> getBinaryCode() {
+>>>>>>> 0d8593f5013ad0461213211f5b34f51523fb76f9
         return InstructionTranslator.getInstance().translate(inputCode);
 
     }
@@ -55,7 +70,11 @@ public class MAC1Assembler {
         String previous = getElementSafe(data, i - 1);
         String tag = getElementSafe(data, i);
         String next = getElementSafe(data, i + 1);
+<<<<<<< HEAD
        
+=======
+
+>>>>>>> 0d8593f5013ad0461213211f5b34f51523fb76f9
         if (tag.contains(":")) {
             if (previous == null) {
                 if (InstructionTranslator.getInstance().isValid(next)) {
@@ -116,11 +135,39 @@ public class MAC1Assembler {
         try {
             return data[location];
         } catch (Exception ex) {
+<<<<<<< HEAD
             //System.out.println("BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB");
+=======
+>>>>>>> 0d8593f5013ad0461213211f5b34f51523fb76f9
             return null;
         }
     }
 
+<<<<<<< HEAD
+=======
+    public void printstring() {
+        System.out.println("--------------------- memory");
+        for (Map.Entry<String, String> set : this.memory.entrySet()) {
+            System.out.println("__" + set.getKey() + "__" + set.getValue() + "__");
+        }
+
+        System.out.println("--------------------- allocated TEMP");
+        for (Map.Entry<String, Integer> set : this.alloacted.entrySet()) {
+            System.out.println("__" + set.getKey() + "__" + set.getValue() + "__");
+        }
+        System.out.println("------------------ tag");
+        for (Map.Entry<String, Integer> set : this.tag_table.entrySet()) {
+            System.out.println("__" + set.getKey() + "__" + set.getValue() + "__");
+        }
+
+        System.out.println("------------------- code");
+        for (String str : this.inputCode) {
+            System.out.println(str);
+        }
+        System.out.println("----------------------- memory");
+
+    }
+>>>>>>> 0d8593f5013ad0461213211f5b34f51523fb76f9
 
     public void loadData(String code) {
         //code = code.substring(4);
@@ -133,7 +180,11 @@ public class MAC1Assembler {
 
             String token = tokens[linePosition];
             Mac1Enum enum_temp = checkforTag(tokens, linePosition);
+<<<<<<< HEAD
             //System.out.println(enum_temp + "  " + tokens[linePosition]);
+=======
+            System.out.println(enum_temp + "  " + tokens[linePosition]);
+>>>>>>> 0d8593f5013ad0461213211f5b34f51523fb76f9
             switch (enum_temp) {
                 case CODE:
                     i++;
@@ -150,7 +201,11 @@ public class MAC1Assembler {
                         linePosition = line;
                         //System.out.println(data_mem);
                     }
+<<<<<<< HEAD
                     //System.out.println("TOKEN "+token +" DATA "+data_mem);
+=======
+                    System.out.println("TOKEN "+token +" DATA "+data_mem);
+>>>>>>> 0d8593f5013ad0461213211f5b34f51523fb76f9
                     this.memory.put(token, data_mem);
                     break;
                 case ARRAY_DATA_S:
@@ -159,7 +214,11 @@ public class MAC1Assembler {
                         String arrayTag = tokens[linePosition - 1];
                         data_mem = StringClass.getInstance().stringBuild(tokens, linePosition, line);
                         linePosition = line;
+<<<<<<< HEAD
                       //  System.out.println(data_mem);
+=======
+                        System.out.println(data_mem);
+>>>>>>> 0d8593f5013ad0461213211f5b34f51523fb76f9
                         this.memory.put(arrayTag, data_mem);
 
                     }
@@ -251,14 +310,20 @@ public class MAC1Assembler {
         int i = 0;
         for (String token : tokens) {
             Mac1Enum enum_temp = checkforTag(tokens, i);
+<<<<<<< HEAD
             
+=======
+>>>>>>> 0d8593f5013ad0461213211f5b34f51523fb76f9
             switch (enum_temp) {
                 case CODE:
                     String code_line = token;
                     String argument;
 
                     if (InstructionTranslator.getInstance().InstructionHasArgument(token)) {
+<<<<<<< HEAD
                        
+=======
+>>>>>>> 0d8593f5013ad0461213211f5b34f51523fb76f9
                         Mac1Enum argumentEnum = checkforTag(tokens, i + 1);
                         argument = tokens[i + 1];
                         switch (argumentEnum) {
@@ -294,6 +359,7 @@ public class MAC1Assembler {
 
         return false;
     }
+<<<<<<< HEAD
     private void reset(){
         this.alloacted.clear();
         this.inputCode.clear();
@@ -303,6 +369,8 @@ public class MAC1Assembler {
         this.tag_table.clear();
         InstructionTranslator.getInstance().reset();
     }
+=======
+>>>>>>> 0d8593f5013ad0461213211f5b34f51523fb76f9
 
     class memoryAllocation {
 

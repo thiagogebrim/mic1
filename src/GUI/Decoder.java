@@ -12,7 +12,11 @@ import java.util.Scanner;
 
 public class Decoder {
 
+<<<<<<< HEAD
     static public ArrayList<MIR> opCodeContainer = new ArrayList<>();
+=======
+    ArrayList<MIR> opCodeContainer = new ArrayList<>();
+>>>>>>> 0d8593f5013ad0461213211f5b34f51523fb76f9
     HashMap<String, String> registers = new HashMap<>();
     BitSet micro = new BitSet(32);
     Queue<String> codeQueue = new LinkedList<>();
@@ -99,17 +103,28 @@ public class Decoder {
             String macroSegment = this.codeQueue.poll();
 
             if (!(macroSegment.equals("EOL"))) {
+<<<<<<< HEAD
                 malLine += macroSegment+";";
                 containOperator(macroSegment);
               //  System.out.println(macroSegment);
                // System.out.println(this.convertBitSetToString(micro));
+=======
+                malLine += macroSegment;
+                containOperator(macroSegment);
+                System.out.println(macroSegment);
+                System.out.println(this.convertBitSetToString(micro));
+>>>>>>> 0d8593f5013ad0461213211f5b34f51523fb76f9
             } else {
                 MIR code = new MIR(this.convertBitSetToString(micro), malLine);
                 malLine = "";
                 //answerOp = convertBitSetToString(micro);
                 //System.out.println(this.convertBitSetToString(micro));
                 //System.out.println();
+<<<<<<< HEAD
                 opCodeContainer.add(code);
+=======
+                this.opCodeContainer.add(code);
+>>>>>>> 0d8593f5013ad0461213211f5b34f51523fb76f9
                 answerOp = convertBitSetToString(micro);
                 this.micro = new BitSet();
 
@@ -118,7 +133,10 @@ public class Decoder {
             //System.out.println(macroSegment);
             //System.out.println(this.convertBitSetToString(micro));
         }
+<<<<<<< HEAD
     //    System.out.println("SIZE  ===  "+opCodeContainer.size());
+=======
+>>>>>>> 0d8593f5013ad0461213211f5b34f51523fb76f9
         return answerOp;
         //System.out.println(this.convertBitSetToString(micro));
         //System.out.println(this.opCodeContainer);

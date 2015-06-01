@@ -10,7 +10,10 @@ import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+<<<<<<< HEAD
 import java.io.InputStream;
+=======
+>>>>>>> 0d8593f5013ad0461213211f5b34f51523fb76f9
 import java.net.URISyntaxException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -27,6 +30,7 @@ public class JImagePanel extends JPanel{
     
     public JImagePanel(String fileName){
         try {
+<<<<<<< HEAD
             InputStream in = JImagePanel.class.getClassLoader().getResourceAsStream("GUI/"+fileName);
             image= ImageIO.read(in);
             //  instr = Utils.class.getResourceAsStream("car.jpg");
@@ -41,6 +45,20 @@ public class JImagePanel extends JPanel{
         } catch (IOException ex) {
             Logger.getLogger(JImagePanel.class.getName()).log(Level.SEVERE, null, ex);
         }
+=======
+            File test = new File(JImagePanel.class.getResource(fileName).toURI());
+            image= ImageIO.read(test);
+        } catch (URISyntaxException | IOException  ex) {
+            Logger.getLogger(JImagePanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        Dimension size = new Dimension(image.getWidth(null), image.getHeight(null));
+        setPreferredSize(size);
+        setMinimumSize(size);
+        setMaximumSize(size);
+        setSize(size);
+        setLayout(null);
+>>>>>>> 0d8593f5013ad0461213211f5b34f51523fb76f9
     }
     
     @Override

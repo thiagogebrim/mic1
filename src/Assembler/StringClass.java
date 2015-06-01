@@ -37,9 +37,15 @@ public class StringClass {
             String str = "";
             try {
                 str = fill(Integer.toBinaryString((int) arry[i]));
+<<<<<<< HEAD
                // System.out.println(str + "  " + arry[i]);
                 str = fill(Integer.toBinaryString((int) arry[i + 1])) + str;
                // System.out.println(str + "  " + arry[i + 1]);
+=======
+                System.out.println(str + "  " + arry[i]);
+                str = fill(Integer.toBinaryString((int) arry[i + 1])) + str;
+                System.out.println(str + "  " + arry[i + 1]);
+>>>>>>> 0d8593f5013ad0461213211f5b34f51523fb76f9
             } catch (java.lang.ArrayIndexOutOfBoundsException ex) {
                 str = fill("") + str;
                 //   System.out.println(str  );
@@ -47,7 +53,11 @@ public class StringClass {
            // System.out.println(str);
 
             short decimalValue = (short) Integer.parseInt(str, 2);
+<<<<<<< HEAD
           //  System.out.println(decimalValue + " " + str);
+=======
+            System.out.println(decimalValue + " " + str);
+>>>>>>> 0d8593f5013ad0461213211f5b34f51523fb76f9
             data.add(decimalValue);
         }
         return data;

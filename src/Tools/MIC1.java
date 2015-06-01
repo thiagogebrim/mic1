@@ -5,7 +5,10 @@
  */
 package Tools;
 
+<<<<<<< HEAD
 import Assembler.InstructionTranslator;
+=======
+>>>>>>> 0d8593f5013ad0461213211f5b34f51523fb76f9
 import Machine.MIR;
 import Machine.MainMemory;
 import Machine.Registers;
@@ -15,6 +18,7 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import Assembler.MAC1Assembler;
+<<<<<<< HEAD
 import EnumerationData.RegisterEnum;
 import GUI.Decoder;
 import static GUI.GUI.MIR_mal;
@@ -38,6 +42,10 @@ import static GUI.GUI.sh_txt;
 import static GUI.GUI.totalCycle_lbl;
 import static GUI.GUI.wr_txt;
 import javax.swing.table.DefaultTableModel;
+=======
+import static GUI.GUI.assemblyCodeData;
+import static GUI.GUI.opcodeArea;
+>>>>>>> 0d8593f5013ad0461213211f5b34f51523fb76f9
 
 /**
  *
@@ -49,18 +57,25 @@ public class MIC1 implements Runnable {
     final public static Object objectLock = new Object();
     static public int totalCycle = 0;
     static public boolean step = false;
+<<<<<<< HEAD
     public static boolean speedTime = false;
     public static int timer = 20;
     static public boolean fullCycle = false;
     static public int currentCode = 0;
     final static private ArrayList<MIR> tracker = new ArrayList<>();
     public final static Object doneLock = new Object();
+=======
+    static public boolean fullCycle = false;
+    static public int currentCode = 0;
+    final static private ArrayList<MIR> tracker = new ArrayList<>();
+>>>>>>> 0d8593f5013ad0461213211f5b34f51523fb76f9
 
     static public boolean end = false;
     Registers registers = Registers.getInstance();
     MainMemory mainMemory = MainMemory.getInstance();
 
     ArrayList<MIR> InstructionSet = new ArrayList<>();
+<<<<<<< HEAD
     MAC1Assembler mac;
 
     @Override
@@ -95,10 +110,56 @@ public class MIC1 implements Runnable {
             //  System.out.println("\n************************ CODE line " + currentCode + "  " + tracker.get(tracker.size() - 1).getAll() + " \n");
             totalCycle_lbl.setText(String.valueOf(totalCycle));
 
+=======
+
+    @Override
+    public void run() {
+        MIC1_DATA.arrageMachine();
+
+       // this.registers.setRegisterValue(0, (short) 0);
+        this.registers.setDataStructureValue(1, (short) 40);
+        this.registers.setDataStructureValue(2, (short) 1024);
+
+        this.registers.setDataStructureValue(3, (short) 0);
+        this.registers.setDataStructureValue(4, (short) 0);
+        this.registers.setDataStructureValue(5, (short) 0);
+        this.registers.setDataStructureValue(6, (short) 1);
+        this.registers.setDataStructureValue(7, (short) -1);
+        this.registers.setDataStructureValue(8, (short) 4095);
+        this.registers.setDataStructureValue(9, (short) 255);
+        this.registers.setDataStructureValue(10, (short) 42);
+        this.registers.setDataStructureValue(11, (short) 0);
+        this.registers.setDataStructureValue(12, (short) 0);
+       // this.registers.setRegisterValue(13, (short) 8);
+       // this.registers.setRegisterValue(14, (short) 12);
+        this.registers.setDataStructureValue(15, (short) 40);
+        this.mainMemory.setDataStructureValue(100, (short) -100);
+
+        FileReader fileReader = FileReader.getInstance();
+        fileReader.readText(assemblyCodeData.getText());
+
+        MAC1Assembler mac = new MAC1Assembler();
+        mac.loadData(fileReader.getOutput());
+
+        for (Short intcode : mac.getBinaryCode()) {
+            this.mainMemory.pushDecodedInstruction(intcode);
+        }
+
+        fileReader.readText(opcodeArea.getText());
+        fileReader.parseMACInstruction();
+        this.InstructionSet = fileReader.opCode();
+
+        while (!end) {
+            waitOnObject();
+            fullRun(this.InstructionSet.get(currentCode));
+            totalCycle++;
+            System.out.println("\n************************ CODE line " + currentCode + "  " + tracker.get(tracker.size() - 1).getAll() + " \n");
+>>>>>>> 0d8593f5013ad0461213211f5b34f51523fb76f9
         }
 
         System.out.println("TOTAL  CYCLE " + totalCycle);
         for (MIR trace : tracker) {
+<<<<<<< HEAD
             //  System.out.println(trace.getAll());
         }
         synchronized (doneLock) {
@@ -124,6 +185,9 @@ public class MIC1 implements Runnable {
 
         synchronized (objectLock) {
             objectLock.notify();
+=======
+            System.out.println(trace.getAll());
+>>>>>>> 0d8593f5013ad0461213211f5b34f51523fb76f9
         }
     }
 
@@ -140,11 +204,16 @@ public class MIC1 implements Runnable {
     }
 
     private void fullRun(MIR code) {
+<<<<<<< HEAD
         this.setGUI(code);
         tracker.add(code);
        // MIR_mal.setText(currentCode + ":" + tracker.get(tracker.size() - 1).getMAL());
         /// MIR_binary.setText(tracker.get(tracker.size() - 1).getAll());
         // System.out.println("code  " + code.getAll() + "  " + currentCode);
+=======
+        tracker.add(code);
+        System.out.println("code  " + code.getAll() + "  " + currentCode);
+>>>>>>> 0d8593f5013ad0461213211f5b34f51523fb76f9
         Pipe.setMIR(code);
 
         MIC1_DATA.FullCycle();
@@ -154,6 +223,7 @@ public class MIC1 implements Runnable {
             end = true;
         }
     }
+<<<<<<< HEAD
 
     private void initializeData() {
 
@@ -194,4 +264,6 @@ public class MIC1 implements Runnable {
             addr_txt.setText("" + mir.getAddr());
         }
     }
+=======
+>>>>>>> 0d8593f5013ad0461213211f5b34f51523fb76f9
 }

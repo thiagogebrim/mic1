@@ -5,10 +5,7 @@
  */
 package Assembler;
 
-<<<<<<< HEAD
 import static GUI.GUI.InstructionTable;
-=======
->>>>>>> 0d8593f5013ad0461213211f5b34f51523fb76f9
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -27,31 +24,11 @@ public class InstructionTranslator {
     private static final InstructionTranslator instance = new InstructionTranslator();
 
     private InstructionTranslator() {
-<<<<<<< HEAD
-=======
-
-        keymap.put("LODD", (short) 0);
-        keymap.put("STOD", (short) 4096);
-        keymap.put("ADDD", (short) 8192);
-        keymap.put("SUBD", (short) 12288);
-        keymap.put("JPOS", (short) 16384);
-        keymap.put("JZER", (short) 20480);
-        keymap.put("JUMP", (short) 24576);
-        keymap.put("LOCO", (short) 28672);
-        keymap.put("LODL", (short) -32768);
-        keymap.put("STOL", (short) -28672);
-        keymap.put("ADDL", (short) -24576);
-        keymap.put("SUBL", (short) -20480);
-        keymap.put("JNEG", (short) -16384);
-        keymap.put("CALL", (short) -8192);
-
->>>>>>> 0d8593f5013ad0461213211f5b34f51523fb76f9
         jumpInstruction.add("JPOS");
         jumpInstruction.add("JZER");
         jumpInstruction.add("JUMP");
         jumpInstruction.add("JNEG");
         jumpInstruction.add("CALL");
-<<<<<<< HEAD
          // keymap.put(".LOC", (short)0);
 
          // NoParemsInstruction.add(".LOC");
@@ -109,36 +86,11 @@ public class InstructionTranslator {
                 this.NoParemsInstruction.add(instruction);
             }
         }
-=======
-
-        keymap.put("PSHI", (short) -4096);
-        keymap.put("POPI", (short) -3584);
-        keymap.put("PUSH", (short) -3072);
-        keymap.put("POP", (short) -2560);
-        keymap.put("RETN", (short) -2048);
-        keymap.put("SWAP", (short) -1536);
-        keymap.put("INSP", (short) -1024);
-        keymap.put("DESP", (short) -512);
-        keymap.put("HALT", (short) -256);
-       // keymap.put(".LOC", (short)0);
-
-       // NoParemsInstruction.add(".LOC");
-        NoParemsInstruction.add("POP");
-        NoParemsInstruction.add("PSHI");
-        NoParemsInstruction.add("POPI");
-        NoParemsInstruction.add("PUSH");
-        NoParemsInstruction.add("RETN");
-        NoParemsInstruction.add("SWAP");
-        NoParemsInstruction.add("HALT");
->>>>>>> 0d8593f5013ad0461213211f5b34f51523fb76f9
 
     }
 
     protected static InstructionTranslator getInstance() {
-<<<<<<< HEAD
         
-=======
->>>>>>> 0d8593f5013ad0461213211f5b34f51523fb76f9
         return InstructionTranslator.instance;
     }
 
@@ -195,7 +147,6 @@ public class InstructionTranslator {
         return true;
     }
 
-<<<<<<< HEAD
     protected ArrayList<String> translate(ArrayList<String> instructions) {
 
         final ArrayList<String> decodedInstruction = new ArrayList<>();
@@ -213,22 +164,6 @@ public class InstructionTranslator {
                 decoded = keymap.get(instruction_array[0]);
             }
             decodedInstruction.add(decoded + "#" + instruction_temp);
-=======
-    protected ArrayList<Short> translate(ArrayList<String> instructions) {
-        
-        final ArrayList<Short> decodedInstruction = new ArrayList<>();
-        for (String instruction_temp : instructions) {
-            short decoded ;
-            instruction_temp = instruction_temp.toUpperCase();
-            String[] instruction_array = instruction_temp.split(" ");
-            if (InstructionHasArgument(instruction_array[0])) {
-                decoded = keymap.get(instruction_array[0]);
-                decoded += Short.valueOf(instruction_array[1]);
-            } else {
-                decoded = keymap.get(instruction_array[0]);
-            }
-            decodedInstruction.add(decoded);
->>>>>>> 0d8593f5013ad0461213211f5b34f51523fb76f9
         }
         return decodedInstruction;
     }

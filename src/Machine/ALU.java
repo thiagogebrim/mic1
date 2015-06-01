@@ -3,12 +3,8 @@ package Machine;
 import GUI.TextFieldGui;
 import javax.swing.JTextField;
 import Tools.MIC1;
-<<<<<<< HEAD
 import EnumerationData.ComponentEnum;
 
-=======
-import EnumationData.ComponentEnum;
->>>>>>> 0d8593f5013ad0461213211f5b34f51523fb76f9
 
 
 /*! \brief  This class simulates the MIC1 ALU component.
@@ -28,17 +24,10 @@ public class ALU extends TextFieldGui {
     final static private ALU instance = new ALU(GUI.GUI.alu);
    
     static public ALU getInstance(){
-<<<<<<< HEAD
         return instance;
     } 
 
     private ALU(JTextField textField) {
-=======
-        return ALU.instance;
-    } 
-
-    public ALU(JTextField textField) {
->>>>>>> 0d8593f5013ad0461213211f5b34f51523fb76f9
         super(ComponentEnum.ALU, textField);
     }
 
@@ -68,12 +57,8 @@ public class ALU extends TextFieldGui {
                 data = MIC1.MIC1_DATA.get(ComponentEnum.AMUX).getData();
                 break;
             case 3:
-<<<<<<< HEAD
                 short c = MIC1.MIC1_DATA.get(ComponentEnum.AMUX).getData();                
                 data = (short) ~c;
-=======
-                short c = MIC1.MIC1_DATA.get(ComponentEnum.AMUX).getData();                data = (short) ~c;
->>>>>>> 0d8593f5013ad0461213211f5b34f51523fb76f9
                 break;
         }
 

@@ -2,12 +2,8 @@ package Machine;
 
 import GUI.TextFieldGui;
 import javax.swing.JTextField;
-<<<<<<< HEAD
 import EnumerationData.ComponentEnum;
 import Tools.MIC1;
-=======
-import EnumationData.ComponentEnum;
->>>>>>> 0d8593f5013ad0461213211f5b34f51523fb76f9
 
 /*! \brief  This class simulates the MIC1 Shifter component.
  *
@@ -33,11 +29,7 @@ public class Shifter extends TextFieldGui {
     public void Operations() {
         super.Operations();
         int decimal = convert(Pipe.MemoryInstruction.getSh());
-<<<<<<< HEAD
         Short data = MIC1.MIC1_DATA.get(ComponentEnum.ALU).getData();
-=======
-        Short data = this.getData();
->>>>>>> 0d8593f5013ad0461213211f5b34f51523fb76f9
         switch (decimal) {
             case 0:
                 // NO SHIFT

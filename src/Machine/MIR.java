@@ -46,13 +46,9 @@ public class MIR {
         a_bus = opcode.substring(20, 24);
         addr = opcode.substring(24, opcode.length());
     }
-<<<<<<< HEAD
     public String getMAL(){
         return this.malLine;
     }
-=======
-    
->>>>>>> 0d8593f5013ad0461213211f5b34f51523fb76f9
     
     public String getAll() {
         return this.amux + this.cond + this.alu + this.sh + this.mbr + this.mar + this.rd + this.wr + this.enc + this.c_bus + this.a_bus + this.b_bus + this.addr;

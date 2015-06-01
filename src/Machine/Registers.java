@@ -6,25 +6,16 @@
 package Machine;
 
 import GUI.TableGui;
-<<<<<<< HEAD
 import EnumerationData.ComponentEnum;
 import EnumerationData.RegisterEnum;
 
 /*! \brief  This class simulates the MIC1 Registers file .
  *
-=======
-import EnumationData.ComponentEnum;
-import EnumationData.RegisterEnum;
-
-/*! \brief  This class simulates the MIC1 Registers file .
-*
->>>>>>> 0d8593f5013ad0461213211f5b34f51523fb76f9
  * It is implemented using the Singleton pattern.
  * It is a 16 (registers) data structure memory space.
  * 
  * @author Thiago G Goncalves
  */
-<<<<<<< HEAD
 public final class Registers extends TableGui {
 
     final static private Registers instance = new Registers();
@@ -33,15 +24,6 @@ public final class Registers extends TableGui {
     private Registers() {
         super(ComponentEnum.REGISTER, GUI.GUI.Register, (short) 16);
 
-=======
-
-public final class Registers extends TableGui {
-
-    final static private Registers instance = new Registers();
-
-    private Registers() {
-        super(ComponentEnum.REGISTER, GUI.GUI.Register, (short) 16);
->>>>>>> 0d8593f5013ad0461213211f5b34f51523fb76f9
     }
 
     public static Registers getInstance() {
@@ -49,7 +31,6 @@ public final class Registers extends TableGui {
     }
 
     public void setRegisterValue(RegisterEnum register, Short value) {
-<<<<<<< HEAD
         // this.view(register.ordinal());
         if (RegisterEnum.IR != register) {
 
@@ -75,9 +56,6 @@ public final class Registers extends TableGui {
     public void setDataStructureValue(int index, Short value) {
         viewIR(index);
         super.setDataStructureValue(index, value); //To change body of generated methods, choose Tools | Templates.
-=======
-        this.setDataStructureValue(register.ordinal(), value);
->>>>>>> 0d8593f5013ad0461213211f5b34f51523fb76f9
     }
 
     @Override

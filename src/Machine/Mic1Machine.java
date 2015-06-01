@@ -9,13 +9,8 @@ import GUI.TextFieldGui;
 import java.util.HashMap;
 import Tools.MIC1;
 
-<<<<<<< HEAD
 import EnumerationData.ComponentEnum;
 import EnumerationData.RegisterEnum;
-=======
-import EnumationData.ComponentEnum;
-import EnumationData.RegisterEnum;
->>>>>>> 0d8593f5013ad0461213211f5b34f51523fb76f9
 
 public final class Mic1Machine {
 
@@ -60,15 +55,12 @@ public final class Mic1Machine {
         map.put(ComponentEnum.MEMORY, this.mainMemory);
 
         registers.setRegisterValue(RegisterEnum.SP, memorySize);
-<<<<<<< HEAD
         this.ABus.setIsComponentStep(false);
         this.BBus.setIsComponentStep(false);
         this.AddresBus.setIsComponentStep(false);
         this.CBus.setIsComponentStep(false);
         this.DataBusToMbr.setIsComponentStep(false);
         this.DataBusToMemory.setIsComponentStep(false);
-=======
->>>>>>> 0d8593f5013ad0461213211f5b34f51523fb76f9
        
     }
 
@@ -160,10 +152,7 @@ public final class Mic1Machine {
 
     public void FullCycle() {
         for (Pipe current = this.ABus; current != null; current = current.next()) {
-<<<<<<< HEAD
           //  System.out.println(current.ComponentType());
-=======
->>>>>>> 0d8593f5013ad0461213211f5b34f51523fb76f9
             current.Operations();
         }
     }

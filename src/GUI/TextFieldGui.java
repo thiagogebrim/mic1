@@ -15,23 +15,15 @@ import javax.swing.JComponent;
 import javax.swing.JTextField;
 import Tools.MIC1;
 import static Tools.MIC1.objectLock;
-<<<<<<< HEAD
 import EnumerationData.ComponentEnum;
 import java.util.ArrayList;
 
 /*! \brief class to give a text field a data component (JText Field).
  *
-=======
-import EnumationData.ComponentEnum;
-
-/*! \brief class to give a text field a data component (JText Field).
-*
->>>>>>> 0d8593f5013ad0461213211f5b34f51523fb76f9
  * @author Thiago G Goncalves
  */
 public class TextFieldGui extends Pipe implements GuiInterfacei {
 
-<<<<<<< HEAD
     final private JTextField textField;
     static final private ArrayList<TextFieldGui> selfObjects = new ArrayList<>();
 
@@ -43,14 +35,6 @@ public class TextFieldGui extends Pipe implements GuiInterfacei {
         selfObjects.add(this);
         
         
-=======
-    final public JTextField textField;
-
-    public TextFieldGui(ComponentEnum type, final JTextField textField) {
-        super(type);
-        this.textField = textField;
-        this.textField.addFocusListener(new Focus());
->>>>>>> 0d8593f5013ad0461213211f5b34f51523fb76f9
     }
 
     public JTextField getTextField() {
@@ -75,15 +59,12 @@ public class TextFieldGui extends Pipe implements GuiInterfacei {
 
         }
     }
-<<<<<<< HEAD
     
     public void updateData(){
         this.textField.setText(this.toString());
         this.textField.repaint();
     }
     
-=======
->>>>>>> 0d8593f5013ad0461213211f5b34f51523fb76f9
 
     @Override
     public JComponent getComponent() {
@@ -92,16 +73,11 @@ public class TextFieldGui extends Pipe implements GuiInterfacei {
 
     @Override
     public void setData(short data) {
-<<<<<<< HEAD
         //super.setData(data);
         this.setDataRaw(data);
         if (GUI.mic1_gui) {
             this.update(ColorMap.UPDATE);
         }
-=======
-        super.setData(data);
-        this.update(ColorMap.UPDATE);
->>>>>>> 0d8593f5013ad0461213211f5b34f51523fb76f9
         if (MIC1.step) {
             synchronized (objectLock) {
                 try {
@@ -110,7 +86,6 @@ public class TextFieldGui extends Pipe implements GuiInterfacei {
                     Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, null, ex);
                 }
             }
-<<<<<<< HEAD
         }else if(MIC1.speedTime){
             synchronized (objectLock) {
                 try {
@@ -127,8 +102,6 @@ public class TextFieldGui extends Pipe implements GuiInterfacei {
     public static void repaint(){
         for(TextFieldGui obj : selfObjects){
             obj.updateData();
-=======
->>>>>>> 0d8593f5013ad0461213211f5b34f51523fb76f9
         }
     }
 

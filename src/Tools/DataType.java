@@ -5,13 +5,8 @@
  */
 package Tools;
 
-<<<<<<< HEAD
 import EnumerationData.ConvertEnum;
 import EnumerationData.ComponentEnum;
-=======
-import EnumationData.ConvertEnum;
-import EnumationData.ComponentEnum;
->>>>>>> 0d8593f5013ad0461213211f5b34f51523fb76f9
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import static Tools.MIC1.objectLock;
@@ -23,7 +18,6 @@ import static Tools.MIC1.objectLock;
 public class DataType {
 
     private boolean isAscii = false;
-<<<<<<< HEAD
     private boolean isInstruction = false;
     final protected ComponentEnum type;
     static private ConvertEnum convert = ConvertEnum.DECIMAL;
@@ -45,20 +39,6 @@ public class DataType {
     }
 
     
-=======
-    final protected ComponentEnum type;
-    static private ConvertEnum convert = ConvertEnum.DECIMAL;
-    private Short data = 0;
-
-    /**
-     *
-     * @param place The Enum type of the the data
-     */
-    public DataType(ComponentEnum place) {
-        this.type = place;
-    }
-
->>>>>>> 0d8593f5013ad0461213211f5b34f51523fb76f9
     /**
      *
      * @return will return the private data field of the object type short
@@ -66,7 +46,6 @@ public class DataType {
     public short getData() {
         return data;
     }
-<<<<<<< HEAD
     protected void setDataRaw(short data){
         this.data = data;
     }
@@ -74,13 +53,6 @@ public class DataType {
         this.data = data;
 
         if (MIC1.step && isComponentStep) {
-=======
-
-    public void setData(short data) {
-        this.data = data;
-
-        if (MIC1.step) {
->>>>>>> 0d8593f5013ad0461213211f5b34f51523fb76f9
             synchronized (objectLock) {
                 try {
                     objectLock.wait();
@@ -94,10 +66,7 @@ public class DataType {
     public static void setConvert(ConvertEnum aConvert) {
         convert = aConvert;
     }
-<<<<<<< HEAD
   
-=======
->>>>>>> 0d8593f5013ad0461213211f5b34f51523fb76f9
 
     protected void transformDataTo12bitContainer() {
         String decimal = Integer.toBinaryString(0x10000 | data).substring(1);
@@ -132,12 +101,9 @@ public class DataType {
                 if(this.isAscii){
                     return this.buildAscii(data);
                 }
-<<<<<<< HEAD
                 if(this.isInstruction){
                     return this.instruction;
                 }
-=======
->>>>>>> 0d8593f5013ad0461213211f5b34f51523fb76f9
                 return String.valueOf(this.data);
             case HEXADECIMAL:
                 return Integer.toHexString(data);
@@ -154,11 +120,7 @@ public class DataType {
         int left_int = Integer.parseInt(left_str, 2);
         int right_int = Integer.parseInt(right_str, 2);
         String temp = ((char) left_int) + "" + ((char) right_int);
-<<<<<<< HEAD
       //  System.out.println("s:"+ s + " left:"+left_str+  " "+left_int + "   right:"+right_str + " "+ right_int+ "  data"+this.data);
-=======
-        System.out.println("s:"+ s + " left:"+left_str+  " "+left_int + "   right:"+right_str + " "+ right_int+ "  data"+this.data);
->>>>>>> 0d8593f5013ad0461213211f5b34f51523fb76f9
         
         return temp;
 
@@ -174,7 +136,6 @@ public class DataType {
             return s;
         }
     }
-<<<<<<< HEAD
 
     public void setIsInstruction(boolean isInstruction) {
         this.isInstruction = isInstruction;
@@ -191,6 +152,4 @@ public class DataType {
     public String ComponentType(){
         return this.type.toString();
     }
-=======
->>>>>>> 0d8593f5013ad0461213211f5b34f51523fb76f9
 }

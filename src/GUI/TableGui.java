@@ -14,7 +14,6 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import Tools.MIC1;
 import static Tools.MIC1.objectLock;
-<<<<<<< HEAD
 import EnumerationData.ComponentEnum;
 import static Interfaces.GuiInterfacei.INACTIVE_COLOUR;
 import static Interfaces.GuiInterfacei.UPDATE_COLOUR;
@@ -27,17 +26,6 @@ import java.util.ArrayList;
  *
  * @author Thiago G Goncalves
  */
-=======
-import EnumationData.ComponentEnum;
-import Machine.Pipe;
-import java.util.ArrayList;
-
-/*! \brief  Abstract class to give a table a data structure component (JTable).
-*
- * @author Thiago G Goncalves
- */
-
->>>>>>> 0d8593f5013ad0461213211f5b34f51523fb76f9
 public abstract class TableGui extends Pipe implements GuiInterfacei {
 
     final private JTable table;
@@ -50,17 +38,10 @@ public abstract class TableGui extends Pipe implements GuiInterfacei {
         super(type);
         this.table = table;
         this.data_structure_size = structure_size;
-<<<<<<< HEAD
        // System.out.println(data_structure_size);
         for (int i = 0; i < data_structure_size; i++) {
             DataType data_ty = new DataType(ComponentEnum.DEFAULT);
             data_ty.setIsComponentStep(true);
-=======
-        System.out.println(data_structure_size);
-        for (int i = 0; i < data_structure_size; i++) {
-            DataType data_ty = new DataType(ComponentEnum.DEFAULT);
-
->>>>>>> 0d8593f5013ad0461213211f5b34f51523fb76f9
             getModel().addRow(new Object[]{(short) i, data_ty});
             data_structure.add(data_ty);
         }
@@ -71,28 +52,15 @@ public abstract class TableGui extends Pipe implements GuiInterfacei {
         return this.table;
     }
 
-<<<<<<< HEAD
     /**
      * Will call a series of update function calls from JTable
      *
-=======
-    
-    
-    /**
-     * Will call a series of update function calls from JTable
-     * 
->>>>>>> 0d8593f5013ad0461213211f5b34f51523fb76f9
      * @param update updates the JTable with the given ColorMap
      */
     @Override
     public void update(final ColorMap update) {
 
-<<<<<<< HEAD
         if (GUI.mic1_gui) {
-=======
-        
-        if (GUI.register_memory_gui) {
->>>>>>> 0d8593f5013ad0461213211f5b34f51523fb76f9
             switch (update) {
                 case SELECT:
 
@@ -100,10 +68,7 @@ public abstract class TableGui extends Pipe implements GuiInterfacei {
                     this.getTable().setRowSelectionInterval(dynamicRow, dynamicRow);
                     this.getTable().setSelectionBackground(SELECT_COLOUR);
                     this.getTable().scrollRectToVisible(this.getTable().getCellRect(dynamicRow, 0, true));
-<<<<<<< HEAD
                     this.getTable().repaint();
-=======
->>>>>>> 0d8593f5013ad0461213211f5b34f51523fb76f9
                     break;
                 case INACTIVATE:
 
@@ -113,10 +78,7 @@ public abstract class TableGui extends Pipe implements GuiInterfacei {
                     this.getTable().setRowSelectionInterval(dynamicRow, dynamicRow);
                     this.getTable().setSelectionBackground(UPDATE_COLOUR);
                     this.getTable().scrollRectToVisible(this.getTable().getCellRect(dynamicRow, 0, true));
-<<<<<<< HEAD
                     this.getTable().repaint();
-=======
->>>>>>> 0d8593f5013ad0461213211f5b34f51523fb76f9
                     break;
                 default:
                     throw new AssertionError(update.name());
@@ -124,15 +86,8 @@ public abstract class TableGui extends Pipe implements GuiInterfacei {
         }
     }
 
-<<<<<<< HEAD
     /**
      *
-=======
-    
-    
-    /**
-     * 
->>>>>>> 0d8593f5013ad0461213211f5b34f51523fb76f9
      * @return the private JTable
      */
     @Override
@@ -140,30 +95,17 @@ public abstract class TableGui extends Pipe implements GuiInterfacei {
         return this.table;
     }
 
-<<<<<<< HEAD
     /**
      *
      * @return DefaultTableModel of the private JTable
-=======
-    
-    /**
-     * 
-     * @return DefaultTableModel of the private JTable 
->>>>>>> 0d8593f5013ad0461213211f5b34f51523fb76f9
      */
     public final DefaultTableModel getModel() {
         return (DefaultTableModel) this.getTable().getModel();
     }
 
-<<<<<<< HEAD
     /**
      * Will update the row position for the next update call
      *
-=======
-    
-    /**
-     *  Will update the row position for the next update call
->>>>>>> 0d8593f5013ad0461213211f5b34f51523fb76f9
      * @param row the location in the JTable to be updated
      */
     public void requestUpdateWrapper(int row) {
@@ -175,14 +117,9 @@ public abstract class TableGui extends Pipe implements GuiInterfacei {
      * that is notify();
      */
     public void step() {
-<<<<<<< HEAD
         if (GUI.mic1_gui) {
             this.update(ColorMap.UPDATE);
         }
-=======
-
-        this.update(ColorMap.UPDATE);
->>>>>>> 0d8593f5013ad0461213211f5b34f51523fb76f9
         if (MIC1.step) {
             synchronized (objectLock) {
                 try {
@@ -191,7 +128,6 @@ public abstract class TableGui extends Pipe implements GuiInterfacei {
                     Logger.getLogger(DataType.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
-<<<<<<< HEAD
         }else if(MIC1.speedTime){
             synchronized (objectLock) {
                 try {
@@ -200,22 +136,15 @@ public abstract class TableGui extends Pipe implements GuiInterfacei {
                     Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, null, ex);
                 }
             }
-=======
->>>>>>> 0d8593f5013ad0461213211f5b34f51523fb76f9
         }
     }
 
     /**
-<<<<<<< HEAD
      *
-=======
-     * 
->>>>>>> 0d8593f5013ad0461213211f5b34f51523fb76f9
      * @param index location in the JTable
      * @param value value to be in set in the desired location
      */
     public void setDataStructureValue(int index, Short value) {
-<<<<<<< HEAD
 
         data_structure.get(index).setData(value);
         requestUpdateWrapper(index);
@@ -233,17 +162,6 @@ public abstract class TableGui extends Pipe implements GuiInterfacei {
 
     /**
      *
-=======
-        
-        data_structure.get(index).setData(value);
-        requestUpdateWrapper(index);
-        step();
-    }
-
-    
-    /**
-     * 
->>>>>>> 0d8593f5013ad0461213211f5b34f51523fb76f9
      * @param index the location in the JTable
      * @return the DataType object in the location value
      */
@@ -251,8 +169,5 @@ public abstract class TableGui extends Pipe implements GuiInterfacei {
         return data_structure.get(index);
     }
 
-<<<<<<< HEAD
     
-=======
->>>>>>> 0d8593f5013ad0461213211f5b34f51523fb76f9
 }

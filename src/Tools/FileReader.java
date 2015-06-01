@@ -39,16 +39,7 @@ public class FileReader {
     }
     
     
-<<<<<<< HEAD
  
-=======
-    public void parseMACInstruction() {
-        this.instruction.clear();
-        for (String str : this.inputCode) {
-            instruction.add(new MIR(str, str));
-        }
-    }
->>>>>>> 0d8593f5013ad0461213211f5b34f51523fb76f9
     public void inputString(String input){
         String[] tokens = input.split("\n");
         for(String token : tokens){
@@ -65,16 +56,10 @@ public class FileReader {
         Scanner file = new Scanner(text);
         while (file.hasNextLine()) {
             String temp_c = file.nextLine();
-<<<<<<< HEAD
             
             temp_c = temp_c.trim();
             if (!temp_c.isEmpty()) {
             this.inputCode.add(temp_c);
-=======
-            this.inputCode.add(temp_c);
-            temp_c = temp_c.trim();
-            if (!temp_c.isEmpty()) {
->>>>>>> 0d8593f5013ad0461213211f5b34f51523fb76f9
                 output += temp_c + "\n";
             }
         }

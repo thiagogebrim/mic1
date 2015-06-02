@@ -31,9 +31,6 @@ public class MAC1Assembler {
     MainMemory m_memory;
     ArrayList memory_mic1 = new ArrayList();
 
- 
-   
-    
     public ArrayList<String> MacCode() {
 
         return this.inputCode;
@@ -55,7 +52,7 @@ public class MAC1Assembler {
         String previous = getElementSafe(data, i - 1);
         String tag = getElementSafe(data, i);
         String next = getElementSafe(data, i + 1);
-       
+
         if (tag.contains(":")) {
             if (previous == null) {
                 if (InstructionTranslator.getInstance().isValid(next)) {
@@ -121,7 +118,6 @@ public class MAC1Assembler {
         }
     }
 
-
     public void loadData(String code) {
         //code = code.substring(4);
 
@@ -159,12 +155,18 @@ public class MAC1Assembler {
                         String arrayTag = tokens[linePosition - 1];
                         data_mem = StringClass.getInstance().stringBuild(tokens, linePosition, line);
                         linePosition = line;
-                      //  System.out.println(data_mem);
+                        //  System.out.println(data_mem);
                         this.memory.put(arrayTag, data_mem);
 
                     }
 
                     break;
+                default:
+                    if (InstructionTranslator.getInstance().isMemoryLocation(token)) {
+                        System.out.println("11111");
+                        MainMemory.getInstance().setAllocation_location(Short.valueOf(tokens[linePosition + 1]));
+                    }
+
             }
             linePosition++;
         }
@@ -251,14 +253,14 @@ public class MAC1Assembler {
         int i = 0;
         for (String token : tokens) {
             Mac1Enum enum_temp = checkforTag(tokens, i);
-            
+
             switch (enum_temp) {
                 case CODE:
                     String code_line = token;
                     String argument;
 
                     if (InstructionTranslator.getInstance().InstructionHasArgument(token)) {
-                       
+
                         Mac1Enum argumentEnum = checkforTag(tokens, i + 1);
                         argument = tokens[i + 1];
                         switch (argumentEnum) {
@@ -288,13 +290,15 @@ public class MAC1Assembler {
                     }
                     this.inputCode.add(code_line);
                     break;
+
             }
             i++;
         }
 
         return false;
     }
-    private void reset(){
+
+    private void reset() {
         this.alloacted.clear();
         this.inputCode.clear();
         this.memory.clear();

@@ -27,7 +27,8 @@ public class MainMemory extends TableGui {
     public Pipe begin;
     public Pipe end;
 
-    private short current_allocation_location = 50;
+    static private short allocation_location =50;
+    private short current_allocation_location = allocation_location;
 
     private static final MainMemory instance = new MainMemory();
 
@@ -107,9 +108,15 @@ public class MainMemory extends TableGui {
         return this.current_allocation_location - 1;
     }
 
+    public  void setAllocation_location(short allocation_location) {
+        MainMemory.allocation_location = allocation_location;
+        current_allocation_location = allocation_location;
+    }
+    
+
     @Override
     public void clearDataStructure() {
-        this.current_allocation_location = 50;
+        this.current_allocation_location = allocation_location;
         mac1StructionCount = 0;
         memoryLocation = 0;
         data = 0;

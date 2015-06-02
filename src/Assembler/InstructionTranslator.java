@@ -6,6 +6,7 @@
 package Assembler;
 
 import static GUI.GUI.InstructionTable;
+import Machine.MainMemory;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -29,16 +30,22 @@ public class InstructionTranslator {
         jumpInstruction.add("JUMP");
         jumpInstruction.add("JNEG");
         jumpInstruction.add("CALL");
-         // keymap.put(".LOC", (short)0);
-
-         // NoParemsInstruction.add(".LOC");
-
+ 
         this.parseSupportedInstruction();
+
     }
-    protected void reset(){
+    
+    
+    protected boolean isMemoryLocation(String isLoc){
+        isLoc = isLoc.toUpperCase();
+        return isLoc.equals(".LOC");
+        
+    }
+
+    protected void reset() {
         instance.keymap.clear();
         instance.NoParemsInstruction.clear();
-         this.parseSupportedInstruction();
+        this.parseSupportedInstruction();
     }
 
     private void parseSupportedInstruction() {
@@ -90,7 +97,7 @@ public class InstructionTranslator {
     }
 
     protected static InstructionTranslator getInstance() {
-        
+
         return InstructionTranslator.instance;
     }
 
@@ -154,12 +161,12 @@ public class InstructionTranslator {
             short decoded;
             instruction_temp = instruction_temp.toUpperCase();
             String[] instruction_array = instruction_temp.split(" ");
-            
+
             if (InstructionHasArgument(instruction_array[0])) {
                 decoded = keymap.get(instruction_array[0]);
-               // System.out.println(decoded);
+                // System.out.println(decoded);
                 decoded += Short.valueOf(instruction_array[1]);
-               // System.out.println("ALL : "+decoded);
+                // System.out.println("ALL : "+decoded);
             } else {
                 decoded = keymap.get(instruction_array[0]);
             }

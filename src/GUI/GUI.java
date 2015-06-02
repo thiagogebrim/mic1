@@ -33,7 +33,7 @@ import javax.swing.table.DefaultTableModel;
 public class GUI extends javax.swing.JFrame {
 
     public static boolean mic1_gui = true;
-
+    public static GUI GUIFrame;
     Decoder instructs;
     Thread test_runner;
 
@@ -41,6 +41,7 @@ public class GUI extends javax.swing.JFrame {
      * Creates new form GUI
      */
     public GUI() {
+        GUIFrame = this;
         this.setResizable(false);
         instructs = new Decoder();
         initComponents();
@@ -1917,6 +1918,7 @@ public class GUI extends javax.swing.JFrame {
         MIC1.step = false;
         mic1_gui = false;
         MIC1.speedTime = false;
+        runningGUI();
         synchronized (objectLock) {
             objectLock.notify();
         }
@@ -2049,6 +2051,8 @@ public class GUI extends javax.swing.JFrame {
         pause.setEnabled(false);
         end.setEnabled(false);
         kill.setEnabled(false);
+        GUIFrame.repaint();
+        
     }
 
     public static String transformStringToHtml(String strToTransform) {
